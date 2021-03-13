@@ -1,43 +1,20 @@
-
-class Players
-    def create_users
-        @Players = [UserPlayer.new, UserPlayer.new]
-        @Players[0].input_user("player 1")
-        @Players[0].input_user("player 2")
-    end
-
-    def get_players
-        return @Players
-    end
-end
-
-class UserPlayer
-    def initialize
-        @userPlayer = {}
-    end
-
-    def set_user_param
-        @userPlayer[:points] = 100
-    end
-
-    def input_user(player)
-
-        puts "Please enter name for #{player}"
-        user_name = gets.chomp.capitalize
-        @userPlayer[:name] = user_name 
-        set_user_param
-
-        puts "Hi, #{@userPlayer[:name]}, you have a #{@userPlayer[:points]} points!"
-        up = @userPlayer
-        return up
-    end
-
-
-end
+load './Players.rb'
+load './Example.rb'
 
 class TheGame
+    
+    def playgame
+       
+        welcome
+        players = Players.new
+        players.create_users
+
+        exm = Example.new
+        exm.example_generator
+    end
+
     def welcome 
-        puts "HI"
+        puts "HI" # will be added
     end
 
     def initUsers
@@ -46,28 +23,19 @@ class TheGame
 
     def createUser(player)
         @userPlayer = {}
-        puts "Please enter name for #{player}"
+        puts "Please enter name #{player}"
         user_name = gets.chomp.capitalize
+        #implement validation of the name!!!
         @userPlayer[:name] = user_name 
        
         set_user_param
         puts "Hi, #{@userPlayer[:name]}, you have a #{@userPlayer[:points]} points!"
         up = @userPlayer
         return up
+
     end
 
     def set_user_param
         @userPlayer[:points] = 100
     end
-
-    def playgame
-       
-        welcome
-        players = Players.new
-        players.create_users
-        puts players.get_players
-
-    end
-
-
 end
