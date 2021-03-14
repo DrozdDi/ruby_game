@@ -7,10 +7,21 @@ class Example
     
     def recive_example
         generator
-        # check the user`s answer
-        @answer == @calculated ? res = @time : res = false
+        @answer == @calculated ? res = check_time_limit : res = false
         return res
         
+    end
+
+    def check_time_limit
+        time_limit  = 20
+        puts "#{@time} witn #{time_limit}"
+        if @time > time_limit  
+            puts ("tooo long")
+            checked = false
+        else
+            puts ("you got")
+            checked = @time
+            end
     end
 
     def get_answer
@@ -42,7 +53,4 @@ class Example
         answer = gets.chomp.capitalize
         puts answer
     end
-
- 
-
 end

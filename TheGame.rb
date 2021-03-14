@@ -14,13 +14,12 @@ class TheGame
     end
 
     def autorizatin
-        players = Players.new
-        players.create_users
-        players.game_progress
+        @players = Players.new
+        @players.create_users
+        @players.game_progress
     end
 
-    # def start_game
-    #     exm = Example.new
-    #     exm.example_generator
-    # end
+    def start_game
+        # @players.game_progress
+    end
 end
