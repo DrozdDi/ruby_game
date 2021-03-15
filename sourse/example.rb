@@ -1,4 +1,4 @@
-load './user_player.rb'
+require_relative 'user_player.rb'
 require 'benchmark'
 
 class Example

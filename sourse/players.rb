@@ -1,9 +1,9 @@
-load './Example.rb'
-load './user_player.rb'
+require_relative 'example.rb'
+require_relative 'user_player.rb'
 
 class Players
     def initialize(user_name_1, user_name_2)
-        starter_balance  = 50
+        starter_balance  = 10
         @Players = {
             player_1: UserPlayer.new(user_name_1, starter_balance), 
             player_2: UserPlayer.new(user_name_2, starter_balance)  
