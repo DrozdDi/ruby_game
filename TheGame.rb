@@ -1,25 +1,19 @@
 load './Players.rb'
 load './Example.rb'
+load './methods.rb'
 
 class TheGame
     
     def playgame
-        welcome
-        autorizatin
-        # start_game
-    end
+        welcome_message
+        
+        print "Please enter name for player 1:  "
+        user_name_1 = gets.chomp.capitalize
+        print "Please enter name for player 2:  "
+        user_name_2 = gets.chomp.capitalize
 
-    def welcome 
-        puts "HI" # will be added
-    end
+        players = Players.new(user_name_1, user_name_2)  
+        players.battle  
 
-    def autorizatin
-        @players = Players.new
-        @players.create_users
-        @players.game_progress
-    end
-
-    def start_game
-        # @players.game_progress
     end
 end

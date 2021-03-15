@@ -1,31 +1,34 @@
+load './user_player.rb'
 require 'benchmark'
 
 class Example
-    @answer = 0
-    @calculated = 0
-    @time = 0
+    attr_reader :user_answer, :right_answer, :blow
     
     def recive_example
         generator
-        @answer == @calculated ? res = check_time_limit : res = false
-        return res
-        
+        @user_answer == @right_answer ? check_time_limit : wrong_answ
+        return @blow
     end
 
     def check_time_limit
         time_limit  = 20
-        puts "#{@time} witn #{time_limit}"
+        power = 0
         if @time > time_limit  
-            puts ("tooo long")
-            checked = false
+            puts ("You thought too long, your strength is gone ¯\_(ツ)_/¯")
+            @blow = false
         else
-            puts ("you got")
-            checked = @time
-            end
+            @blow = time_limit - @time
+            puts ("Right! The force of your blow is equal #{@blow}")
+        end
     end
 
-    def get_answer
-        @answer = gets.chomp.to_i
+    def wrong_answ
+        puts "Khm... NO! Right  answer - #{@right_answer}"
+        @blow = false
+    end 
+
+    def save_user_answer
+        @user_answer = gets.chomp.to_i
     end
 
     def generator
@@ -37,7 +40,7 @@ class Example
         
         7.times {|i| print exm[i], " "}
 
-        time = Benchmark.measure { get_answer }
+        time = Benchmark.measure { save_user_answer }
         @time = time.real.to_i
 
         #example calculation
@@ -45,12 +48,7 @@ class Example
         exm[1] == '-' ? calculated -= exm[2] : calculated +=  exm[2]
         exm[3] == '-' ? calculated -= exm[4] : calculated +=  exm[4]
         
-        @calculated = calculated
-        puts "answ: #{@calculated}, time #{@time}"
+        @right_answer = calculated
     end
 
-    def answ
-        answer = gets.chomp.capitalize
-        puts answer
-    end
 end
