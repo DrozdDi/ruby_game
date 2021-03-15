@@ -12,26 +12,28 @@ class Players
 
     def game_progress
         @exmpl = Example.new
-        continue = true
-        while continue do
-            player_move(@Players[:player_1], @Players[:player_2])
-            check_score(@Players[:player_2]) ? player_move(@Players[:player_2], @Players[:player_1]) : continue = false
-            check_score(@Players[:player_1]) ? continue = true  : continue = false
+        @continue = true
+        now_move = @Players[:player_1]
+        opponent = @Players[:player_2]
+        while @continue do
+            player_move(now_move, opponent)
+            check_score(opponent)
             show_balance
+            now_move == @Players[:player_1] ? now_move  = @Players[:player_2] : now_move = @Players[:player_1]
+            opponent == @Players[:player_2] ? opponent  = @Players[:player_1] : opponent = @Players[:player_2]
         end 
         puts 'Game over!'
     end
 
     def check_score(player)
         puts "cheking csore"
-        player[:balance] = player[:user].get_points
-        player[:balance] > 0 ? send = true : send = false
-        return send 
+        balance = player[:user].get_points
+        balance > 0 ? @continue  = true  : @continue = false
     end
 
     def  player_move (carrent_player, opponent)
         power = carrent_player[:user].move(@exmpl)
-        power ? opponent[:user].blow(power) : puts('mimo')
+        power ? opponent[:user].blow(power) : puts('Ooops! Wrong answer')
     end
 
     def show_balance
@@ -46,7 +48,7 @@ end
 
 class UserPlayer
     def initialize
-        @userPlayer = {points: 100}
+        @userPlayer = {points: 5}
     end
 
     def get_points
@@ -75,7 +77,13 @@ class UserPlayer
         return up
     end
 
+    def type_to_start
+        print "#{@userPlayer[:name]}, your move! Type to start: "
+        gets.chomp 
+    end
+
     def move(exmpl)
+        type_to_start
         right_answer = exmpl.recive_example
         return right_answer
         # right_answer ? blow(right_answer) :  puts('2')
