@@ -12,11 +12,11 @@ class TheGame
     end
 
     def input_names(user)        
-        print "Please enter name for #{user}:  "
+        print "Please enter name for #{user}: "
         user_name = gets.chomp
         user_name.length < 2 ? uncorrect = true : uncorrect = false
         while uncorrect
-            puts  "The name must be at least 2 characters long, re-enter please:"
+            print  "The name must be at least 2 characters long, re-enter please: "
             user_name = gets.chomp.capitalize
             user_name.length < 2 ? uncorrect = true : uncorrect = false
         end

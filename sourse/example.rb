@@ -13,7 +13,7 @@ class Example
     def check_time_limit
         time_limit  = 20
         power = 0
-        if @time > time_limit  
+        if @time >= time_limit  
             puts ("You thought too long, your strength is gone ¯#{'\_'}(ツ)_/¯")
             @blow = false
         else
