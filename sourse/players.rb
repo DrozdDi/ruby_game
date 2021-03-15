@@ -5,7 +5,7 @@ require_relative 'methods.rb'
 
 class Players
     def initialize(user_name_1, user_name_2)
-        starter_balance  = 10
+        starter_balance  = 100
         @Players = {
             player_1: UserPlayer.new(user_name_1, starter_balance), 
             player_2: UserPlayer.new(user_name_2, starter_balance)  
