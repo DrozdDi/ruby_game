@@ -1,5 +1,7 @@
 require_relative 'example.rb'
 require_relative 'user_player.rb'
+require_relative 'methods.rb'
+
 
 class Players
     def initialize(user_name_1, user_name_2)
@@ -23,9 +25,7 @@ class Players
             @current_move == @Players[:player_1] ? @current_move  = @Players[:player_2] : @current_move = @Players[:player_1]
             @opponent == @Players[:player_2] ? @opponent  = @Players[:player_1] : @opponent = @Players[:player_2]
         end 
-
-        puts "#{@opponent.name}, you dealt a fatal blow! You are win!"
-        
+        fatal_blow_message(@opponent.name)
     end
 
     def  player_move
@@ -41,7 +41,7 @@ class Players
     end
 
     def show_balance
-        puts "Balance:
+        puts "User`s balance:
         #{@Players[:player_1].name} - #{@Players[:player_1].points} points 
         #{@Players[:player_2].name} - #{@Players[:player_2].points} points"
     end

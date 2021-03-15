@@ -14,16 +14,19 @@ class Example
         time_limit  = 20
         power = 0
         if @time > time_limit  
-            puts ("You thought too long, your strength is gone ¯\_(ツ)_/¯")
+            puts ("You thought too long, your strength is gone ¯#{'\_'}(ツ)_/¯")
             @blow = false
         else
             @blow = time_limit - @time
-            puts ("Right! The force of your blow is equal #{@blow}")
+            puts ("Right ٩(◕‿◕)۶
+            Time spent: #{@time} sec
+            The force of your blow: #{@blow} points")
         end
     end
 
     def wrong_answ
-        puts "Khm... NO! Right  answer - #{@right_answer}"
+        puts "Khm...(Ò﹏Ó)
+        NO! Right  answer - #{@right_answer}"
         @blow = false
     end 
 
@@ -47,8 +50,6 @@ class Example
         calculated = exm[0]
         exm[1] == '-' ? calculated -= exm[2] : calculated +=  exm[2]
         exm[3] == '-' ? calculated -= exm[4] : calculated +=  exm[4]
-        
         @right_answer = calculated
     end
-
 end

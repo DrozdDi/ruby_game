@@ -17,7 +17,7 @@ class UserPlayer
     end
 
     def type_to_start
-        print "#{name}, your move! Type enter to get your example: "
+        print "\n#{name}, your move (Press any key to get your example): "
         gets.chomp 
     end
 end
